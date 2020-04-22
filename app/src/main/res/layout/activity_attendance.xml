@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DetailActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/attendance"
+        app:titleTextColor="@color/white"
+        app:titleMarginStart="40dp"
+        app:logo="@drawable/ic_arrow_back_black_24dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <ImageButton
+        android:id="@+id/btn_qrcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:background="@drawable/ic_center_focus_strong_white_24dp"
+        android:contentDescription="@string/image_error" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_checkin"
+        android:layout_below="@id/toolbar"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            android:background="@drawable/border_menu">
+
+            <CheckBox
+                android:id="@+id/cbx_wifi"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:clickable="false"
+                android:text="@string/attendance_wifi" />
+            <CheckBox
+                android:id="@+id/cbx_qrcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/attendance_qrcode"
+                android:clickable="false"
+                android:layout_margin="8dp"/>
+
+            <CheckBox
+                android:id="@+id/cbx_face"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:clickable="false"
+                android:text="@string/attendance_face" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:padding="8dp"
+            android:orientation="vertical"
+            android:background="@drawable/border_menu">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/attendance_list"
+                android:drawableStart="@drawable/ic_people_black_24dp"/>
+
+            <TextView
+                android:id="@+id/tv_attendance_list"
+                android:text="1. Trần Đình Đức\n2. Lê Anh Dũng\n3. Phạm Thành Nam\n"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_checkin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="16dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:text="@string/checkin" />
+</RelativeLayout>

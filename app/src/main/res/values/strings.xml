@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MeetingMinutes</string>
+    <string name="image_error">No image</string>
+    <string name="describe_app">Phần mềm quản lí cuộc họp</string>
+    <string name="login">Đăng nhập</string>
+    <string name="register">Đăng kí</string>
+    <string name="email">Email</string>
+    <string name="password">Mật khẩu</string>
+
+    <string name="meeting">Cuộc họp</string>
+    <string name="notification">Thông báo</string>
+    <string name="calendar">Lịch họp</string>
+    <string name="setting">Cài đặt</string>
+    
+    <string name="attendance">Điểm danh</string>
+    <string name="attendance_list">Danh sách điểm danh</string>
+    <string name="checkin">Check in</string>
+    <string name="attendance_wifi">Wifi</string>
+    <string name="attendance_qrcode">QRCode</string>
+    <string name="attendance_face">Hình ảnh</string>
+        
+</resources>

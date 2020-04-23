@@ -14,11 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.meetingminutes.R;
-import com.example.meetingminutes.activity.HomeActivity;
-import com.example.meetingminutes.activity.SesstionActivity;
+import com.example.meetingminutes.activity.SessionActivity;
 import com.example.meetingminutes.model.Meeting;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -43,7 +40,7 @@ public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingH
             public void onClick(View v) {
                 int pos = vHolder.getAdapterPosition();
                 Toast.makeText(mContext, "Test Click: " + String.valueOf(pos), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext, SesstionActivity.class);
+                Intent intent = new Intent(mContext, SessionActivity.class);
                 mContext.startActivity(intent);
             }
         });

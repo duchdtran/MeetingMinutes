@@ -12,6 +12,7 @@
     <string name="calendar">Lịch họp</string>
     <string name="setting">Cài đặt</string>
     
+    <string name="session_list">Danh sách phiên họp</string>
     <string name="attendance">Điểm danh</string>
     <string name="attendance_list">Danh sách điểm danh</string>
     <string name="checkin">Check in</string>

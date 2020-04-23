@@ -1,6 +1,7 @@
 package com.example.meetingminutes.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,13 +16,15 @@ public class DetailActivity extends AppCompatActivity {
     private TextView tvTime, tvLocation, tvPreside, tvDetail;
     private Button btnAttendance;
     private ImageButton btnBack;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
         InitView();
-
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        btnBack.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -43,6 +46,7 @@ public class DetailActivity extends AppCompatActivity {
         tvLocation = findViewById(R.id.tv_location);
         tvPreside = findViewById(R.id.tv_preside);
         btnAttendance = findViewById(R.id.btn_attendance);
+        toolbar = findViewById(R.id.toolbar);
 //        btnBack = findViewById(R.id.btn_back);
     }
 }

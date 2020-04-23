@@ -4,22 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.DetailActivity">
+    tools:context=".activity.SessionActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="Buổi 1"
-        app:titleTextColor="@color/white"
         android:background="?attr/colorPrimary"
+        app:title="Meeting Minutes"
+        app:titleTextColor="@color/white"
+        app:titleMarginStart="40dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/btn_attendance"
         android:layout_below="@id/toolbar"
         android:orientation="vertical">
 
@@ -34,9 +33,9 @@
                 android:id="@+id/tv_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="17/04 12h30 - 15h00"
                 android:layout_margin="8dp"
-                android:drawableStart="@drawable/ic_alarm_black_24dp"
-                android:text="17/04 12h30 - 15h00" />
+                android:drawableStart="@drawable/ic_alarm_black_24dp"/>
             <TextView
                 android:id="@+id/tv_location"
                 android:layout_width="match_parent"
@@ -44,45 +43,33 @@
                 android:text="P204 B1, Đại học Bách Khoa Hà Nội"
                 android:layout_margin="8dp"
                 android:drawableStart="@drawable/ic_place_black_24dp"/>
-            <TextView
-                android:id="@+id/tv_preside"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nguyễn Thị Hương Giang"
-                android:layout_margin="8dp"
-                android:drawableStart="@drawable/ic_home_black_24dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:padding="8dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_margin="8dp"
             android:background="@drawable/border_menu">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thông tin chi tiết"
-                android:drawableStart="@drawable/ic_info_outline_black_24dp"/>
-
-            <TextView
-                android:id="@+id/tv_detail"
+                android:paddingLeft="8dp"
+                android:drawableStart="@drawable/ic_work_black_24dp"
+                android:paddingTop="8dp"
+                android:text="@string/session_list"
+                android:textStyle="bold" />
+            <ListView
+                android:id="@+id/lv_session"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
+                android:layout_height="match_parent"
+                android:layout_below="@id/toolbar"/>
         </LinearLayout>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_attendance"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:padding="16dp"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:text="Điểm danh" />
+
+
+
 </RelativeLayout>

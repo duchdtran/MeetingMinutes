@@ -2,6 +2,7 @@ package com.example.meetingminutes.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +25,7 @@ public class AttendanceActivity extends AppCompatActivity {
     private Button btnCheckin;
     private ImageButton btnBack, btnQRCode;
     private CheckBox cbxWifi, cbxQRCode, cbxFace;
+    private Toolbar toolbar;
 
     WifiManager wifiManager;
     WifiInfo connection;
@@ -33,7 +35,23 @@ public class AttendanceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_attendance);
 
         InitView();
+        SetEvent();
 
+    }
+
+    private void InitView(){
+        tvAttendanceList = findViewById(R.id.tv_attendance_list);
+        btnCheckin = findViewById(R.id.btn_checkin);
+        btnQRCode = findViewById(R.id.btn_qrcode);
+        cbxFace = findViewById(R.id.cbx_face);
+        cbxQRCode = findViewById(R.id.cbx_qrcode);
+        cbxWifi = findViewById(R.id.cbx_wifi);
+        toolbar = findViewById(R.id.toolbar);
+    }
+
+    private void SetEvent(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnQRCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,12 +63,6 @@ public class AttendanceActivity extends AppCompatActivity {
 //                }
             }
         });
-//        btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
         btnCheckin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,18 +76,7 @@ public class AttendanceActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void InitView(){
-        tvAttendanceList = findViewById(R.id.tv_attendance_list);
-        btnCheckin = findViewById(R.id.btn_checkin);
-//        btnBack = findViewById(R.id.btn_back);
-        btnQRCode = findViewById(R.id.btn_qrcode);
-        cbxFace = findViewById(R.id.cbx_face);
-        cbxQRCode = findViewById(R.id.cbx_qrcode);
-        cbxWifi = findViewById(R.id.cbx_wifi);
-    }
-
-    // Get the results:
+    // Get the results qrcode:
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);

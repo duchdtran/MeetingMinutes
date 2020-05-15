@@ -15,7 +15,7 @@
         app:titleTextColor="@color/white"
         app:titleMarginStart="40dp"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
+        android:theme="@style/ToolbarTheme" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,42 +29,73 @@
             android:layout_margin="8dp"
             android:background="@drawable/border_menu">
 
-            <TextView
-                android:id="@+id/tv_time"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="17/04 12h30 - 15h00"
                 android:layout_margin="8dp"
-                android:drawableStart="@drawable/ic_alarm_black_24dp"/>
-            <TextView
-                android:id="@+id/tv_location"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_alarm_black_24dp"/>
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_marginStart="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="17/04 12h30 - 15h00"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="P204 B1, Đại học Bách Khoa Hà Nội"
                 android:layout_margin="8dp"
-                android:drawableStart="@drawable/ic_place_black_24dp"/>
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_place_black_24dp"/>
+                <TextView
+                    android:id="@+id/tv_location"
+                    android:layout_marginStart="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="P204 B1, Đại học Bách Khoa Hà Nội"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_margin="8dp"
             android:background="@drawable/border_menu">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:drawableStart="@drawable/ic_work_black_24dp"
-                android:paddingTop="8dp"
-                android:text="@string/session_list"
-                android:textStyle="bold" />
-            <ListView
-                android:id="@+id/lv_session"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_work_black_24dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/session_list"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_session"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/toolbar"/>
+                android:layout_height="match_parent"/>
         </LinearLayout>
 
     </LinearLayout>

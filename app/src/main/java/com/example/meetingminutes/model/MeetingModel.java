@@ -2,17 +2,17 @@ package com.example.meetingminutes.model;
 
 import java.sql.Time;
 
-public class Meeting {
+public class MeetingModel {
     private String Name;
     private String Address;
     private Time TimeStart;
     private Time TimeEnd;
     private String Description;
 
-    public Meeting() {
+    public MeetingModel() {
     }
 
-    public Meeting(String name, String address, Time timeStart, Time timeEnd, String description) {
+    public MeetingModel(String name, String address, Time timeStart, Time timeEnd, String description) {
         Name = name;
         Address = address;
         TimeStart = timeStart;

@@ -1,58 +1,65 @@
 package com.example.meetingminutes.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import com.example.meetingminutes.R;
+import com.example.meetingminutes.adapter.MeetingAdapter;
+import com.example.meetingminutes.adapter.SessionAdapter;
+import com.example.meetingminutes.model.SessionModel;
 
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SessionActivity extends AppCompatActivity {
 
-    ListView listView;
+    private RecyclerView myRecycleView;
+    private List<SessionModel> lsSession;
     private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session);
 
-        InitView();
-        SetEvent();
-        listView = findViewById(R.id.lv_session);
-        ArrayList<String> session = new ArrayList<>();
-        session.add("Buổi 1");
-        session.add("Buổi 2");
-        session.add("Buổi 3");
-        session.add("Buổi 4");
-        session.add("Buổi 5");
-        session.add("Buổi 6");
-        session.add("Buổi 7");
-        session.add("Buổi 8");
-        ArrayAdapter adapter = new ArrayAdapter(SessionActivity.this, android.R.layout.simple_dropdown_item_1line, session);
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SessionActivity.this, DetailActivity.class);
-                startActivity(intent);
-            }
-        });
+        initView();
+        setEvent();
+        myRecycleView = findViewById(R.id.rcv_session);
+        lsSession = new ArrayList<>();
+        lsSession.add(new SessionModel("Meeting Minutes", "Đại học bách khoa Hà Nội", new Time(16, 20,0), new Time(17, 20,0), ""));
+        lsSession.add(new SessionModel("Meeting Minutes123", "Đại học bách khoa Hà Nội", new Time(16, 20,0), new Time(17, 20,0), ""));
+        lsSession.add(new SessionModel("Meeting Minutes213", "Đại học bách khoa Hà Nội", new Time(16, 20,0), new Time(17, 20,0), ""));
+        lsSession.add(new SessionModel("Meeting Minutes546", "Đại học bách khoa Hà Nội", new Time(16, 20,0), new Time(17, 20,0), ""));
+        lsSession.add(new SessionModel("Meeting Minutes2657", "Đại học bách khoa Hà Nội", new Time(16, 20,0), new Time(17, 20,0), ""));
+        lsSession.add(new SessionModel("Meeting Minutes2364", "Đại học bách khoa Hà Nội", new Time(16, 20,0), new Time(17, 20,0), ""));
+        lsSession.add(new SessionModel("Meeting Minutes3243", "Đại học bách khoa Hà Nội", new Time(16, 20,0), new Time(17, 20,0), ""));
+        lsSession.add(new SessionModel("Meeting Minutes235", "Đại học bách khoa Hà Nội", new Time(16, 20,0), new Time(17, 20,0), ""));
+        SessionAdapter sessionAdapter = new SessionAdapter(this, lsSession);
+        myRecycleView.setLayoutManager(new LinearLayoutManager(this));
+        myRecycleView.setAdapter(sessionAdapter);
 
     }
 
-    private void InitView(){
+    private void initView(){
         toolbar = findViewById(R.id.toolbar);
     }
-    private void SetEvent(){
+    private void setEvent(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

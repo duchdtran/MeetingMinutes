@@ -5,10 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 
 import com.example.meetingminutes.R;
@@ -21,20 +25,31 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class HomeActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    BottomNavigationView bottomNav;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        InitView();
+        initView();
+        setEvent();
     }
 
-    private void InitView(){
+    private void initView(){
         toolbar = findViewById(R.id.toolbar);
+        bottomNav = findViewById(R.id.bottom_navigation);
+
+
+    }
+    private void setEvent(){
         setSupportActionBar(toolbar);
-        //Bottom Navigation
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_account_circle_white_24dp);
+
         bottomNav.setOnNavigationItemSelectedListener(navLisener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MeetingFragment()).commit();
+        
+
     }
 
     @Override
@@ -43,6 +58,16 @@ public class HomeActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.option_menu, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener navLisener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override

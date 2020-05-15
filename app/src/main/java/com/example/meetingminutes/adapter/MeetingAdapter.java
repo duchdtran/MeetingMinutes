@@ -15,16 +15,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.meetingminutes.R;
 import com.example.meetingminutes.activity.SessionActivity;
-import com.example.meetingminutes.model.Meeting;
+import com.example.meetingminutes.model.MeetingModel;
 
 import java.util.List;
 
 public class MeetingAdapter extends RecyclerView.Adapter<MeetingAdapter.MeetingHolder>{
 
     Context mContext;
-    List<Meeting> mData;
+    List<MeetingModel> mData;
 
-    public MeetingAdapter(Context mContext, List<Meeting> mData) {
+    public MeetingAdapter(Context mContext, List<MeetingModel> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }

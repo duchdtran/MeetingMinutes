@@ -12,11 +12,10 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:theme="@style/ToolbarTheme"
         app:title="@string/meeting"
         app:titleTextColor="@color/white"
         app:titleMarginStart="24dp"
-        app:logo="@drawable/ic_account_circle_white_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -11,7 +11,7 @@
     <string name="notification">Thông báo</string>
     <string name="calendar">Lịch họp</string>
     <string name="setting">Cài đặt</string>
-    
+
     <string name="session_list">Danh sách phiên họp</string>
     <string name="attendance">Điểm danh</string>
     <string name="attendance_list">Danh sách điểm danh</string>
@@ -19,5 +19,5 @@
     <string name="attendance_wifi">Wifi</string>
     <string name="attendance_qrcode">QRCode</string>
     <string name="attendance_face">Hình ảnh</string>
-        
+
 </resources>

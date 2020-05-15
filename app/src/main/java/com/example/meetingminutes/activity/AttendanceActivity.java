@@ -1,5 +1,6 @@
 package com.example.meetingminutes.activity;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,10 +19,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.meetingminutes.R;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 
 public class AttendanceActivity extends AppCompatActivity {
+    public static final int QRCODE_REQUEST = 1;
+
     private TextView tvAttendanceList;
     private Button btnCheckin;
     private ImageButton btnBack, btnQRCode;
@@ -34,12 +36,12 @@ public class AttendanceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance);
 
-        InitView();
-        SetEvent();
+        initView();
+        setEvent();
 
     }
 
-    private void InitView(){
+    private void initView(){
         tvAttendanceList = findViewById(R.id.tv_attendance_list);
         btnCheckin = findViewById(R.id.btn_checkin);
         btnQRCode = findViewById(R.id.btn_qrcode);
@@ -49,24 +51,21 @@ public class AttendanceActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
     }
 
-    private void SetEvent(){
+    private void setEvent(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnQRCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cbxQRCode.setChecked(true);
-//                try {
-//                    new IntentIntegrator(AttendanceActivity.this).initiateScan();
-//                }catch (Exception e){
-//                    Toast.makeText(AttendanceActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                }
+                Intent intent = new Intent(AttendanceActivity.this, ScanCodeActivity.class);
+                startActivityForResult(intent, QRCODE_REQUEST);
+                //startActivity(intent);
             }
         });
         btnCheckin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                wifiManager = (WifiManager)getSystemService(Context.WIFI_SERVICE);
+                wifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                 connection = wifiManager.getConnectionInfo();
 
                 String display = "SSID: " +connection.getSSID() + "RSSI: " +connection.getRssi() + "Mac Address: " + connection.getMacAddress();
@@ -76,18 +75,26 @@ public class AttendanceActivity extends AppCompatActivity {
             }
         });
     }
-    // Get the results qrcode:
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result != null) {
-            if(result.getContents() == null) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
         }
+        return super.onOptionsItemSelected(item);
+    }
+
+    //QRCode
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == QRCODE_REQUEST){
+            String result = data.getStringExtra("QRCODE");
+            if(result.contains("Hello world")){
+                Toast.makeText(this, "Điểm danh QRCode thành công.", Toast.LENGTH_SHORT).show();
+                cbxQRCode.setChecked(true);
+                return;
+            }
+        }
+        Toast.makeText(this, "Mã QRCode không chính xác.", Toast.LENGTH_SHORT).show();
     }
 }

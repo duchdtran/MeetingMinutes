@@ -1,10 +1,12 @@
 package com.example.meetingminutes.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -22,16 +24,21 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        InitView();
+        initView();
+        setEvent();
+    }
+    private void initView(){
+        tvTime = findViewById(R.id.tv_time);
+        tvDetail = findViewById(R.id.tv_detail);
+        tvLocation = findViewById(R.id.tv_location);
+        tvPreside = findViewById(R.id.tv_preside);
+        btnAttendance = findViewById(R.id.btn_attendance);
+        toolbar = findViewById(R.id.toolbar);
+    }
+    private void setEvent(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(DetailActivity.this, SesstionActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+
         btnAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,13 +47,10 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
     }
-    private void InitView(){
-        tvTime = findViewById(R.id.tv_time);
-        tvDetail = findViewById(R.id.tv_detail);
-        tvLocation = findViewById(R.id.tv_location);
-        tvPreside = findViewById(R.id.tv_preside);
-        btnAttendance = findViewById(R.id.btn_attendance);
-        toolbar = findViewById(R.id.toolbar);
-//        btnBack = findViewById(R.id.btn_back);
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

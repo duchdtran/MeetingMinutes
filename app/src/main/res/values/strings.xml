@@ -6,6 +6,10 @@
     <string name="register">Đăng kí</string>
     <string name="email">Email</string>
     <string name="password">Mật khẩu</string>
+    <string name="fullname">Họ và tên</string>
+    <string name="address">Địa chỉ</string>
+    <string name="phone_number">Điện thoại</string>
+    <string name="re_password">Đổi mật khẩu</string>
 
     <string name="meeting">Cuộc họp</string>
     <string name="notification">Thông báo</string>

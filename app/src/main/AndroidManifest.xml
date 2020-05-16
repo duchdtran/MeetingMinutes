@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ScanCodeActivity"></activity>
+        <activity android:name=".AttendanceAdminActivity"></activity>
+        <activity android:name=".activity.ScanCodeActivity" />
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.AttendanceActivity" />
         <activity android:name=".activity.DetailActivity" />

@@ -3,21 +3,21 @@ package com.example.meetingminutes.model;
 import android.graphics.Bitmap;
 
 public class ImageModel {
-    private Bitmap image;
+    private int imageResource;
     private String title;
 
-    public ImageModel(Bitmap image, String title) {
+    public ImageModel(int imageResource, String title) {
         super();
-        this.image = image;
+        this.imageResource = imageResource;
         this.title = title;
     }
 
-    public Bitmap getImage() {
-        return image;
+    public int getImage() {
+        return imageResource;
     }
 
-    public void setImage(Bitmap image) {
-        this.image = image;
+    public void setImage(int image) {
+        this.imageResource = image;
     }
 
     public String getTitle() {

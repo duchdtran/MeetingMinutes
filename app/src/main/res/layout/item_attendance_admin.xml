@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/logo"
+        android:layout_margin="10dp" />
+
+    <TextView
+        android:id="@+id/tv_fullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/img_image"
+        android:layout_alignTop="@id/img_image"
+        android:text="Lê Anh Dũng"
+        android:textSize="15sp"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/tv_status_attendance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/img_image"
+        android:layout_below="@id/tv_fullname"
+        android:singleLine="true"
+        android:text="Có mặt"
+        android:textSize="12sp"
+        android:layout_marginLeft="5dp"/>
+    <CheckBox
+        android:id="@+id/cb_attendance_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/img_image"
+        />
+
+</RelativeLayout>

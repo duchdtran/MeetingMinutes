@@ -4,30 +4,22 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.meetingminutes.R;
-import com.example.meetingminutes.model.ImageModel;
+import com.example.meetingminutes.model.ImageUserModel;
 
 import java.util.List;
 
-public class ImageAdapter extends BaseAdapter {
+public class ImageUserAdapter extends BaseAdapter {
 
-    List<ImageModel> listImage;
+    List<ImageUserModel> listImage;
     Context context;
     int itemWidth;
 
-    public ImageAdapter(List<ImageModel> listImage,Context context) {
+    public ImageUserAdapter(List<ImageUserModel> listImage, Context context) {
         this.listImage = listImage;
         this.context = context;
 
@@ -66,18 +58,6 @@ public class ImageAdapter extends BaseAdapter {
         }
         imageView.setImageResource(listImage.get(i).getImage());
         return imageView;
-    }
-
-
-    public static class ImageHolder extends RecyclerView.ViewHolder {
-        ImageView img_image;
-        TextView tv_name_image;
-
-        public ImageHolder(@NonNull View itemView) {
-            super(itemView);
-            img_image = itemView.findViewById(R.id.img_image);
-            tv_name_image = itemView.findViewById(R.id.tv_name_image);
-        }
     }
 
 }

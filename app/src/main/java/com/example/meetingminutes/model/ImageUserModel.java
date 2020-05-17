@@ -2,14 +2,12 @@ package com.example.meetingminutes.model;
 
 import android.graphics.Bitmap;
 
-public class ImageModel {
+public class ImageUserModel {
     private int imageResource;
-    private String title;
 
-    public ImageModel(int imageResource, String title) {
+    public ImageUserModel(int imageResource) {
         super();
         this.imageResource = imageResource;
-        this.title = title;
     }
 
     public int getImage() {
@@ -20,11 +18,4 @@ public class ImageModel {
         this.imageResource = image;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }

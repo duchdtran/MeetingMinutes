@@ -42,7 +42,7 @@ public class DetailActivity extends AppCompatActivity {
         btnAttendance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DetailActivity.this, AttendanceActivity.class);
+                Intent intent = new Intent(DetailActivity.this, AttendanceAdminActivity.class);
                 startActivity(intent);
             }
         });

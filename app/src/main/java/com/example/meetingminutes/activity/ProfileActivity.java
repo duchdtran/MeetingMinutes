@@ -10,8 +10,8 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.example.meetingminutes.R;
-import com.example.meetingminutes.adapter.ImageAdapter;
-import com.example.meetingminutes.model.ImageModel;
+import com.example.meetingminutes.adapter.ImageUserAdapter;
+import com.example.meetingminutes.model.ImageUserModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     TextView tvNameUser, tvEmailUser, tvPhoneUser, tvAddressUser;
-    List<ImageModel> listImage;
+    List<ImageUserModel> listImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +30,11 @@ public class ProfileActivity extends AppCompatActivity {
         initView();
         setEvent();
         listImage = new ArrayList<>();
-        listImage.add(new ImageModel(R.drawable.ic_image_black_24dp,"anh 1"));
+        listImage.add(new ImageUserModel(R.drawable.ic_image_black_24dp));
         for(int i = 1; i <= 20; i++){
-            listImage.add(new ImageModel(R.drawable.logo,"anh 1"));
+            listImage.add(new ImageUserModel(R.drawable.logo));
         }
-        ImageAdapter adapter = new ImageAdapter(listImage,this);
+        ImageUserAdapter adapter = new ImageUserAdapter(listImage,this);
         GridView gridView = findViewById(R.id.gv_photo_album_1);
         gridView.setAdapter(adapter);
     }

@@ -11,7 +11,8 @@ public class ImageSessionModel {
         this.imageResource = imageResource;
     }
 
-    public ImageSessionModel(int imageResource) {
+    public ImageSessionModel(int imageResource)
+    {
         this.imageResource = imageResource;
     }
 }

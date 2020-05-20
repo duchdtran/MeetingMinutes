@@ -35,7 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
         initView();
         setEvent();
         listImage = new ArrayList<>();
-        listImage.add(new ImageUserModel(R.drawable.ic_image_black_24dp));
+        listImage.add(new ImageUserModel(R.drawable.camera));
         for(int i = 1; i <= 20; i++){
             listImage.add(new ImageUserModel(R.drawable.logo));
         }

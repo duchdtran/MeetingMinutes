@@ -7,10 +7,19 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.animation.Animator;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,7 +34,10 @@ import com.example.meetingminutes.adapter.AttendanceAdminAdapter;
 import com.example.meetingminutes.adapter.ImageSessionAdapter;
 import com.example.meetingminutes.model.AttendanceAdminModel;
 import com.example.meetingminutes.model.ImageSessionModel;
+import android.hardware.Camera;
+import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.meetingminutes.animation.ZoomImageAnimation;
@@ -39,6 +51,14 @@ public class AttendanceAdminActivity extends AppCompatActivity {
     private Toolbar toolbar;
     Spinner spinner ;
     GridView gridView;
+    private ImageView imageView;
+    private ImageView imageView2;
+
+
+    private static final int REQUEST_ID_READ_WRITE_PERMISSION = 99;
+    private static final int REQUEST_ID_IMAGE_CAPTURE = 100;
+    private static final int REQUEST_ID_VIDEO_CAPTURE = 101;
+
 
 
     @Override
@@ -68,22 +88,22 @@ public class AttendanceAdminActivity extends AppCompatActivity {
         }
 
         final ImageSessionAdapter grid_adapter = new ImageSessionAdapter(list_grid,this);
-        GridView gridView = findViewById(R.id.gv_album_session);
+        final GridView gridView = findViewById(R.id.gv_album_session);
         gridView.setAdapter(grid_adapter);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(AttendanceAdminActivity.this);
 
-                AlertDialog dialog = builder.setTitle("Quit application")
+                AlertDialog dialog = builder.setTitle("Annotication")
                         .setMessage("Can you choose your selection?")
-                        .setNegativeButton("Update image", null)
-                        .setPositiveButton("Zoom image", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Zoom image", null)
+                        .setPositiveButton("Update image", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                finish();
+                                captureImage();
                             }
                         })
                         .create();
@@ -105,8 +125,6 @@ public class AttendanceAdminActivity extends AppCompatActivity {
         final AttendanceAdminAdapter adapter = new AttendanceAdminAdapter(list_attendance);
         recyclerView.setAdapter(adapter);
 
-
-
     }
     private void setEvent(){
         setSupportActionBar(toolbar);
@@ -118,4 +136,27 @@ public class AttendanceAdminActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    private void captureImage() {
+
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        this.startActivityForResult(intent, REQUEST_ID_IMAGE_CAPTURE);
+    }
+
+    protected void onActivityResult( int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_ID_IMAGE_CAPTURE) {
+            if (resultCode == RESULT_OK) {
+
+
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "Action canceled", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "Action Failed", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
 }

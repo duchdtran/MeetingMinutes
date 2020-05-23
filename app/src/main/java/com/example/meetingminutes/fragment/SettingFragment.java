@@ -43,7 +43,7 @@ public class SettingFragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         builder.setTitle("Thông báo");
         builder.setMessage("Bạn có muốn đăng xuất không?");
-        builder.setCancelable(false);
+        builder.setCancelable(true);
         builder.setPositiveButton("Không", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

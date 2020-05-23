@@ -53,6 +53,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_more_vert_black_24dp"
         android:layout_alignParentTop="true"
+        android:layout_marginRight="8dp"
         android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +25,11 @@ public class MeetingFragment extends Fragment {
     private RecyclerView myRecycleView;
     private List<MeetingModel> lsMeeting;
 
+    private RecyclerView myRecycleView2;
+    private List<MeetingModel> lsMeeting2;
+
+    TextView tv1, tv2;
+
     public MeetingFragment(){
 
     }
@@ -35,6 +41,35 @@ public class MeetingFragment extends Fragment {
         MeetingAdapter meetingAdapter = new MeetingAdapter(getContext(), lsMeeting);
         myRecycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRecycleView.setAdapter(meetingAdapter);
+
+        myRecycleView2 = view.findViewById(R.id.rcv_meeting2);
+        MeetingAdapter meetingAdapter2 = new MeetingAdapter(getContext(), lsMeeting);
+        myRecycleView2.setLayoutManager(new LinearLayoutManager(getActivity()));
+        myRecycleView2.setAdapter(meetingAdapter2);
+
+        tv1 = view.findViewById(R.id.dadienra);
+        tv2 = view.findViewById(R.id.dangdienra);
+
+        tv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(myRecycleView.getVisibility() ==  View.VISIBLE){
+                    myRecycleView.setVisibility(View.GONE);
+                }else{
+                    myRecycleView.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        tv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(myRecycleView2.getVisibility() ==  View.VISIBLE){
+                    myRecycleView2.setVisibility(View.GONE);
+                }else{
+                    myRecycleView2.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         return view;
     }
 

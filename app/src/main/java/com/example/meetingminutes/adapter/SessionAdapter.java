@@ -3,9 +3,11 @@ package com.example.meetingminutes.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +44,22 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.SessionH
                 Toast.makeText(mContext, "Test Click: " + String.valueOf(pos), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, DetailActivity.class);
                 mContext.startActivity(intent);
+            }
+        });
+        vHolder.btnMoreSession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pos = vHolder.getAdapterPosition();
+                PopupMenu popupMenu = new PopupMenu(mContext, vHolder.btnMoreSession);
+                popupMenu.getMenuInflater().inflate(R.menu.option_meeting, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(mContext, "Item clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
+                popupMenu.show();
             }
         });
         return vHolder;

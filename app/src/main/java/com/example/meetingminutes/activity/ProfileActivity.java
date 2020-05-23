@@ -50,6 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
 
                     AlertDialog dialog = builder.setTitle("Menu image")
+                            .setCancelable(true)
                             .setMessage("Do you want update your image ?")
                             .setNegativeButton("No", null)
                             .setPositiveButton("Update image", new DialogInterface.OnClickListener() {
@@ -67,6 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
 
                     AlertDialog dialog = builder.setTitle("Menu image")
+                            .setCancelable(true)
                             .setMessage("Can you choose your selection?")
                             .setNegativeButton("Update image", null)
                             .setPositiveButton("Zoom image", new DialogInterface.OnClickListener() {

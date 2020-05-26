@@ -1,18 +1,19 @@
 package com.example.meetingminutes.model;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 
 public class MeetingModel {
     private String Name;
     private String Address;
-    private Time TimeStart;
-    private Time TimeEnd;
+    private Timestamp TimeStart;
+    private Timestamp TimeEnd;
     private String Description;
 
     public MeetingModel() {
     }
 
-    public MeetingModel(String name, String address, Time timeStart, Time timeEnd, String description) {
+    public MeetingModel(String name, String address, Timestamp timeStart, Timestamp timeEnd, String description) {
         Name = name;
         Address = address;
         TimeStart = timeStart;
@@ -30,12 +31,12 @@ public class MeetingModel {
     }
 
 
-    public Time getTimeStart() {
+    public Timestamp getTimeStart() {
         return TimeStart;
     }
 
 
-    public Time getTimeEnd() {
+    public Timestamp getTimeEnd() {
         return TimeEnd;
     }
 
